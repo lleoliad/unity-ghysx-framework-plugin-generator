@@ -213,7 +213,7 @@ SOFTWARE.
 
 1. Open the Package Manager window (Window > Package Manager).
 2. Click the '+' button in the upper left corner and select 'Add package from git URL...'.
-3. Enter the following URL: {url}
+3. Enter the following URL: {url}.git
 4. Click 'Add'.
 
 ## Usage
