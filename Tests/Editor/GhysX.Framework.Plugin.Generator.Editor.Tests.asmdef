@@ -1,0 +1,15 @@
+{
+    "name": "GhysX.Framework.Plugin.Generator.Editor.Tests",
+    "rootNamespace": "Unity.GhysX.Framework.Plugin.Generator.Editor.Tests",
+    "references": [],
+    "optionalUnityReferences": [],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": []
+}

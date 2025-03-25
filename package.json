@@ -1,0 +1,53 @@
+{
+  "name": "com.lleoliad.ghysx-framework-plugin-generator",
+  "displayName": "GhysX Framework Plugin Generator",
+  "version": "1.0.0",
+  "unity": "2018.4",
+  "description": "GhysX Framework Plugin Generator is a tool to extend the Unity Editor, capable of automatically generating a development environment for a Unity plugin. This tool generates the necessary file structure and configuration files based on the plugin's basic information, helping developers quickly set up a plugin development environment.",
+  "license": "MIT",
+  "scopedRegistries": [
+    {
+      "name": "package.openupm.com",
+      "url": "https://package.openupm.com",
+      "scopes": [
+        "com.cysharp.unitask",
+        "com.openupm",
+        "org.icsharpcode.sharpziplib"
+      ]
+    }
+  ],
+  "dependencies": {
+    "com.cysharp.unitask": "2.5.4",
+    "com.unity.nuget.newtonsoft-json": "3.2.1",
+    "org.icsharpcode.sharpziplib": "1.4.1"
+  },
+  "keywords": [
+    "Framework"
+  ],
+  "author": {
+    "name": "Lleoliad",
+    "email": "lleoliad@gmail.com",
+    "url": "https://github.com/lleoliad/unity-ghysx-framework-plugin-generator"
+  },
+  "category": "GUI",
+  "relatedPackages": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lleoliad/unity-ghysx-framework-plugin-generator"
+  },
+  "samples": [
+    {
+      "displayName": "Examples",
+      "description": "Examples",
+      "path": "Samples~/Examples"
+    },
+    {
+      "displayName": "Tutorials",
+      "description": "Tutorials",
+      "path": "Samples~/Tutorials"
+    }
+  ],
+  "publishConfig~": {
+    "registry": "https://package.openupm.com"
+  }
+}

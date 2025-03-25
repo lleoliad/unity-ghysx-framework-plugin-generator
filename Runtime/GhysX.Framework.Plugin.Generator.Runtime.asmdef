@@ -1,0 +1,13 @@
+{
+    "name": "GhysX.Framework.Plugin.Generator.Runtime",
+    "rootNamespace": "Unity.GhysX.Framework.Plugin.Generator.Runtime",
+    "references": [],
+    "optionalUnityReferences": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": true,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": []
+}
