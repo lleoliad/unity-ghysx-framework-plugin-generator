@@ -4,7 +4,7 @@
 
 [![license](https://img.shields.io/github/license/lleoliad/unity-ghysx-framework?color=blue)](https://github.com/lleoliad/unity-ghysx-framework/blob/master/LICENSE)
 
-[English](./README.md) | [中文](./Documentation~/README-zh.md)
+[English](../README.md) | [中文](./Documentation~/README-zh.md)
 
 ## 概述
 GhysX Framework Plugin Generator 是一个用于扩展 Unity 编辑器的工具，能够自动生成一个 Unity 插件的开发环境。该工具通过配置插件的基本信息，自动生成必要的文件结构和配置文件，帮助开发者快速搭建插件开发环境。
