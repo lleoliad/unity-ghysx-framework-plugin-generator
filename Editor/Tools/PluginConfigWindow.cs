@@ -75,14 +75,14 @@ namespace Unity.GhysX.Framework.Plugin.Generator.Tools.Editors
     [System.Serializable]
     public class PluginConfig
     {
-        public string author = "Lleoliad";
+        public string author = "lleoliad";
         public string name = "Plugin Template";
         public string version = "0.0.1";
         public string unity = "2018.4";
         public string description = "Unity Editor Extension";
         public List<string> keywords = new List<string>() { "Tools" };
         public string email = "lleoliad@gmail.com";
-        public string url = "https://github.com";
+        public string url = "https://github.com/{author}/{projectName}";
         public string category = "Tools";
     }
 }

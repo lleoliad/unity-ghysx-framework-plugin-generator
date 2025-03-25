@@ -78,14 +78,14 @@ namespace Unity.GhysX.Framework.Plugin.Generator.Tools.Editors
       ""name"": ""package.openupm.com"",
       ""url"": ""https://package.openupm.com"",
       ""scopes"": [
-        ""com.cysharp.unitask"",
         ""com.openupm"",
+        ""com.cysharp.unitask"",
         ""org.icsharpcode.sharpziplib""
       ]
     }
   ],
   ""dependencies"": {
-    ""com.cysharp.unitask"": ""2.5.4"",
+    ""com.cysharp.unitask"": ""2.5.10"",
     ""com.unity.nuget.newtonsoft-json"": ""3.2.1"",
     ""org.icsharpcode.sharpziplib"": ""1.4.1""
   },
@@ -119,15 +119,15 @@ namespace Unity.GhysX.Framework.Plugin.Generator.Tools.Editors
 }";
 
             var content = template
-                .Replace("{author}", _config.author.ToLower())
-                .Replace("{pname}", _config.name.ToLower().Replace(" ", "-"))
+                .Replace("{author}", _config.author)
+                .Replace("{pname}", _config.name.ToLower().Replace(" ", "-").Replace(".", "-"))
                 .Replace("{name}", _config.name)
                 .Replace("{version}", _config.version)
                 .Replace("{unity}", _config.unity)
                 .Replace("{description}", _config.description)
                 .Replace("{keywords}", $"\n    {FormatKeywords(_config.keywords)}\n  ")
                 .Replace("{email}", _config.email)
-                .Replace("{url}", _config.url)
+                .Replace("{url}", _config.url.Replace("{author}", _config.author).Replace("{projectName}", _config.name.ToLower().Replace(" ", "-").Replace(".", "-")))
                 .Replace("{category}", _config.category);
 
             WriteFile("package.json", content);
@@ -189,7 +189,7 @@ SOFTWARE.
 
             template = template.Replace("{year}", year)
                 .Replace("{author}", _config.author);
-            WriteFile("LICENSE.md", template);
+            WriteFile("LICENSE", template);
         }
 
         private void GenerateLinkXml()
@@ -241,7 +241,7 @@ We appreciate your help! ✨
 
             template = template.Replace("{name}", _config.name)
                 .Replace("{description}", _config.description)
-                .Replace("{url}", _config.url);
+                .Replace("{url}", _config.url.Replace("{author}", _config.author).Replace("{projectName}", _config.name.ToLower().Replace(" ", "-").Replace(".", "-")));
             WriteFile("README.md", template);
         }
 
@@ -290,7 +290,7 @@ Please refer to the respective licenses for more information.
 
             var year = DateTime.Now.ToString("yyyy");
             var content = template
-                .Replace("{author}", _config.author.ToLower())
+                .Replace("{author}", _config.author)
                 .Replace("{version}", _config.version)
                 .Replace("{description}", _config.description)
                 .Replace("{year}", year);
