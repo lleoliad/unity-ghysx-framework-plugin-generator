@@ -21,7 +21,7 @@ namespace Unity.GhysX.Framework.Plugin.Generator.Tools.Editors
         }
 
         // ReSharper disable Unity.PerformanceAnalysis
-        public void Generate()
+        public bool Generate()
         {
             try
             {
@@ -35,11 +35,14 @@ namespace Unity.GhysX.Framework.Plugin.Generator.Tools.Editors
                 GenerateAssemblyInfoFiles();
                 GenerateAssemblyDefinitionFiles();
                 AssetDatabase.Refresh();
+                return true;
             }
             catch (Exception e)
             {
                 Debug.LogError($"Generation failed: {e}");
             }
+
+            return false;
         }
 
         private void CreateDirectoryStructure()

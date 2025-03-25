@@ -13,10 +13,10 @@ GhysX Framework Plugin Generator is a tool to extend the Unity Editor, capable o
 - Automatically generate the plugin's directory structure.
 - Generate `package.json` file, which describes the plugin's basic information.
 - Generate `CHANGELOG.md` file, which records the plugin's change history.
-- Generate `LICENSE.md` file, containing the MIT License.
+- Generate `LICENSE` file, containing the MIT License.
 - Generate `Link.xml` file, which configures the Linker.
 - Generate `README.md` file, providing usage instructions for the plugin.
-- Generate `THIRD_PARTY_NOTICES.md` file, listing third-party libraries and their licenses.
+- Generate `Third Party Notices.md` file, listing third-party libraries and their licenses.
 - Generate `AssemblyInfo.cs` file, containing metadata for the assembly.
 - Generate `asmdef` file, defining the assembly configuration.
 

@@ -13,10 +13,10 @@ GhysX Framework Plugin Generator 是一个用于扩展 Unity 编辑器的工具�
 - 自动生成插件的目录结构。
 - 生成 `package.json` 文件，用于描述插件的基本信息。
 - 生成 `CHANGELOG.md` 文件，记录插件的变更历史。
-- 生成 `LICENSE.md` 文件，包含 MIT 许可证。
+- 生成 `LICENSE` 文件，包含 MIT 许可证。
 - 生成 `Link.xml` 文件，用于配置 Linker。
 - 生成 `README.md` 文件，提供插件的使用说明。
-- 生成 `THIRD_PARTY_NOTICES.md` 文件，列出第三方库及其许可证。
+- 生成 `Third Party Notices.md` 文件，列出第三方库及其许可证。
 - 生成 `AssemblyInfo.cs` 文件，包含程序集的元数据。
 - 生成 `asmdef` 文件，定义程序集的配置。
 
