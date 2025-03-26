@@ -3,6 +3,8 @@
 # GhysX Framework Plugin Generator
 
 [![license](https://img.shields.io/github/license/lleoliad/unity-ghysx-framework?color=blue)](https://github.com/lleoliad/unity-ghysx-framework/blob/master/LICENSE)
+[![release](https://img.shields.io/github/v/tag/lleoliad/unity-ghysx-framework-plugin-generator?label=release)](https://github.com/lleoliad/unity-ghysx-framework-plugin-generator/releases)
+[![openupm](https://img.shields.io/npm/v/com.lleoliad.ghysx-framework-plugin-generator?label=openupm&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.lleoliad.ghysx-framework-plugin-generator/)
 
 [English](../README.md) | [中文](./Documentation~/README-zh.md)
 
