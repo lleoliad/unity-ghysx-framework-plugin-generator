@@ -36,6 +36,12 @@ namespace Unity.GhysX.Framework.Plugin.Generator.Tools.Editors
             {
                 GUILayout.FlexibleSpace();
             
+                // https://docs.unity3d.com/Manual/CustomPackages.html
+                if (DrawIconButton("Settings", "Documentation"))
+                {
+                    Application.OpenURL("https://docs.unity3d.com/Manual/CustomPackages.html");
+                }
+                
                 if (DrawIconButton("_Help", "OpenUPM"))
                 {
                     Application.OpenURL("https://openupm.com/packages/com.lleoliad.ghysx-framework-plugin-generator/");
