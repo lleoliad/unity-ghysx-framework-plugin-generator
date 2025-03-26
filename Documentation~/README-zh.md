@@ -21,11 +21,28 @@ GhysX Framework Plugin Generator 是一个用于扩展 Unity 编辑器的工具�
 - 生成 `asmdef` 文件，定义程序集的配置。
 
 ## 安装
+
+### 通过git URL安装
 1. 打开 Unity 编辑器。
 2. 打开 Package Manager 窗口（Window > Package Manager）。
 3. 点击右上角的 '+' 按钮，选择 'Add package from git URL...'。
 4. 输入以下 URL: `https://github.com/lleoliad/unity-ghysx-framework-plugin-generator.git`。
 5. 点击 'Add' 按钮。
+
+### 使用 OpenUPM 安装
+
+[OpenUPM](https://openupm.com/) 是一个开源的UPM包仓库，它支持发布第三方的UPM包，它能够自动管理包的依赖关系，可以使用它安装本框架.
+
+通过openupm命令安装包,要求[nodejs](https://nodejs.org/en/download/) and openupm-cli客户端的支持，如果没有安装请先安装nodejs和open-cli。
+
+    # 使用npm命令安装openupm-cli，如果已经安装请忽略.
+    npm install -g openupm-cli 
+    
+    #切换当前目录到项目的根目录
+    cd YOUR_UNITY_PROJECT_FOLDER
+    
+    #Install ghysx-framework-plugin-generator
+    openupm add com.lleoliad.ghysx-framework-plugin-generator
 
 ## 使用
 1. 安装完成后，在 Unity 编辑器中，通过菜单栏选择 `GhysX/Tools/Plugin Generator` 打开配置窗口。

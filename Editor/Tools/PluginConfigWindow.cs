@@ -13,16 +13,85 @@ namespace Unity.GhysX.Framework.Plugin.Generator.Tools.Editors
     {
         private Vector2 _scrollPosition;
 
-        private readonly PluginConfig _config = new PluginConfig();
+        private PluginConfig _config;
+        private PluginConfig _originalConfig; // For reset
+        
+        private GUIStyle _iconButtonStyle;
 
         [MenuItem("GhysX/Tools/Plugin Generator")]
         public static void ShowWindow()
         {
             GetWindow<PluginConfigWindow>("Plugin Config");
         }
+        
+        private void OnEnable()
+        {
+            _originalConfig = new PluginConfig(); // Save default configuration
+            _config = JsonUtility.FromJson<PluginConfig>(JsonUtility.ToJson(_originalConfig)); // deep copy
+        }
+        
+        private void DrawTitleBar()
+        {
+            GUILayout.BeginHorizontal(EditorStyles.toolbar);
+            {
+                GUILayout.FlexibleSpace();
+            
+                if (DrawIconButton("_Help", "OpenUPM"))
+                {
+                    Application.OpenURL("https://openupm.com/packages/com.lleoliad.ghysx-framework-plugin-generator/");
+                }
+            
+                // Reset button
+                if (DrawIconButton(
+#if UNITY_2021_3_OR_NEWER
+                        "pane options",
+#else
+                "_Popup",
+#endif
+                        "Reset Configuration"))
+                {
+                    ShowResetMenu();
+                }
+            }
+            GUILayout.EndHorizontal();
+        }
 
+        private bool DrawIconButton(string iconName, string tooltip)
+        {
+            if (_iconButtonStyle == null)
+            {
+                _iconButtonStyle = new GUIStyle("IconButton")
+                {
+                    padding = new RectOffset(2, 2, 2, 2),
+                    margin = new RectOffset(2, 2, 2, 2)
+                };
+            }
+        
+            var content = EditorGUIUtility.IconContent(iconName);
+            content.tooltip = tooltip;
+            return GUILayout.Button(content, _iconButtonStyle, GUILayout.Width(24), GUILayout.Height(20));
+        }
+
+        private void ShowResetMenu()
+        {
+            GenericMenu menu = new GenericMenu();
+            menu.AddItem(new GUIContent("Reset Current Configuration"), false, () =>
+            {
+                _config = JsonUtility.FromJson<PluginConfig>(JsonUtility.ToJson(_originalConfig)); // deep copy
+                Repaint();
+            });
+            menu.AddItem(new GUIContent("Restore default"), false, () =>
+            {
+                _config = new PluginConfig(); // completely new default configuration
+                Repaint();
+            });
+            menu.ShowAsContext();
+        }
+        
         void OnGUI()
         {
+            DrawTitleBar();
+            
             _scrollPosition = EditorGUILayout.BeginScrollView(_scrollPosition);
             EditorGUILayout.TextField("Root Path", Application.dataPath);
 
@@ -38,6 +107,8 @@ namespace Unity.GhysX.Framework.Plugin.Generator.Tools.Editors
             _config.url = EditorGUILayout.TextField("URL", _config.url);
             _config.category = EditorGUILayout.TextField("Category", _config.category);
 
+            EditorGUILayout.Space(5);
+            
             if (GUILayout.Button("Generate", GUILayout.Height(36)))
             {
                 if (string.IsNullOrEmpty(_config.name))
@@ -49,24 +120,34 @@ namespace Unity.GhysX.Framework.Plugin.Generator.Tools.Editors
                 bool success = new PluginGenerator(_config).Generate();
                 if (success)
                 {
-                    int result = EditorUtility.DisplayDialogComplex("Generated Successfully",
-                        $"Plugin {_config.name} Generated successfully!\n Path: Assets/{_config.name}",
-                        "Open Directory", // Button 0 
-                        "View In Project", // Button 1 
-                        "OK" //Button 2
-                    );
+                    // int result = EditorUtility.DisplayDialogComplex("Generated Successfully",
+                    //     $"Plugin {_config.name} Generated successfully!\n Path: Assets/{_config.name}",
+                    //     "Open Directory", // Button 0 
+                    //     "View In Project", // Button 1 
+                    //     "OK" //Button 2
+                    // );
+                    
+                    // switch (result)
+                    // {
+                    //     case 0: //Open Directory 
+                    //         OpenPluginDirectory();
+                    //         break;
+                    //     case 1: //View In Project 
+                    //         FocusInProjectWindow();
+                    //         break;
+                    //     case 2: // OK 
+                    //         break;
+                    // }
 
-                    switch (result)
+                    SuccessDialog.Show(_config, (result) =>
                     {
-                        case 0: //Open Directory 
-                            OpenPluginDirectory();
-                            break;
-                        case 1: //View In Project 
-                            FocusInProjectWindow();
-                            break;
-                        case 2: // OK 
-                            break;
-                    }
+                        switch (result)
+                        {
+                            case 0: OpenPluginDirectory(); break; // Open Directory 
+                            case 1: FocusInProjectWindow(); break; // View In Project 
+                            case 2: break; // OK 
+                        }
+                    });
                 }
                 else
                 {
